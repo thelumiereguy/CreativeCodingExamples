@@ -3,11 +3,16 @@ package dev.thelumiereguy.util
 import processing.core.PApplet
 import processing.core.PVector
 
-
+/**
+ * A makeshift algorithm to draw any shape with [sides] with [radius]
+ * You can rotate the shape by specifying the [rotationPhase] param
+ *
+ * [drawAtVertexBlock] block can be used to draw something at each vertex of the original shape
+ */
 internal fun PApplet.plotShape(
-    location: PVector,
+    center: PVector,
     sides: Int,
-    length: Float,
+    radius: Float,
     rotationPhase: Float,
     drawAtVertexBlock: (VertexData) -> Unit = { _ -> }
 ) {
@@ -17,8 +22,8 @@ internal fun PApplet.plotShape(
     val rotationAngle = 360f / sides
 
     translate(
-        location.x,
-        location.y
+        center.x,
+        center.y
     )
 
     rotate(PApplet.radians(rotationPhase))
@@ -28,13 +33,13 @@ internal fun PApplet.plotShape(
     ) { side ->
 
         val startAngle = PApplet.radians(rotationAngle * side)
-        val startX = PApplet.cos(startAngle) * length
-        val startY = PApplet.sin(startAngle) * length
+        val startX = PApplet.cos(startAngle) * radius
+        val startY = PApplet.sin(startAngle) * radius
 
         val endAngle = PApplet.radians(rotationAngle * (side + 1))
 
-        val endX = PApplet.cos(endAngle) * length
-        val endY = PApplet.sin(endAngle) * length
+        val endX = PApplet.cos(endAngle) * radius
+        val endY = PApplet.sin(endAngle) * radius
 
         drawAtVertexBlock(
             VertexData(
