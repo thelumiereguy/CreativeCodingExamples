@@ -4,7 +4,7 @@ import processing.core.PApplet
 import processing.core.PVector
 
 /**
- * A makeshift algorithm to draw any shape with [sides] with [radius]
+ * A makeshift algorithm to draw any shape with n [sides] and [radius]
  * You can rotate the shape by specifying the [rotationPhase] param
  *
  * [drawAtVertexBlock] block can be used to draw something at each vertex of the original shape
