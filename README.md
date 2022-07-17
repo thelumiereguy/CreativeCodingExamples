@@ -1,6 +1,6 @@
 # CreativeCodingExamples
 
-A collection of Creative Coding examples by me other artists. We've used Jetpack Compose and Processing (Java Edition) to create this.
+A collection of Creative Coding examples by me & other artists. We've used Jetpack Compose and Processing (Java Edition) to create these.
 
 
 | Example | Screenshot | Link(s)  |
