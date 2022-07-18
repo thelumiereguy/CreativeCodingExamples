@@ -3,7 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
-val composeVersion = "1.1.1"
+val composeVersion = "1.1.0"
 
 android {
     compileSdk = 31
@@ -56,6 +56,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
     debugImplementation("androidx.compose.ui:ui-tooling:$composeVersion")
-
     implementation("dev.romainguy:kotlin-math:1.3.0")
 }

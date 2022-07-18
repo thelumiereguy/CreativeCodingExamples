@@ -59,8 +59,8 @@ fun AnimatedShapes(modifier: Modifier) {
                         drawLine(
                             Color.White,
                             start = Offset(
-                                cos(radians(0f)) * 150f,
-                                sin(radians(0f)) * 150f
+                                cos(0f) * 150f,
+                                sin(0f) * 150f
                             ),
                             end = Offset(
                                 cos(radians((360 / sideCount))) * 150f,
