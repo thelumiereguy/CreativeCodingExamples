@@ -56,5 +56,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
     debugImplementation("androidx.compose.ui:ui-tooling:$composeVersion")
-    implementation("dev.romainguy:kotlin-math:1.3.0")
+    implementation("dev.romainguy:kotlin-math:1.4.0")
 }

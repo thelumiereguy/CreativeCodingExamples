@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalGraphicsApi::class)
 
-package dev.thelumiereguy.creative_coding_compose.examples.square_torus
+package dev.thelumiereguy.creative_coding_compose.examples.cubic_sphere
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
@@ -12,23 +12,25 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.tooling.preview.Preview
-import dev.thelumiereguy.creative_coding_compose.examples.rippled_lines.RippledLines
+import androidx.compose.ui.unit.IntOffset
+import dev.thelumiereguy.creative_coding_compose.examples.stacker.Stacker
 import dev.thelumiereguy.creative_coding_compose.theme.CreativeCodingComposeTheme
 import kotlin.math.abs
+import kotlin.math.cos
 import kotlin.math.roundToInt
+import kotlin.math.sin
 
-private const val repetitionCount = 10
+private const val repetitionCount = 12
 
 @OptIn(ExperimentalGraphicsApi::class)
 @Composable
-fun SquareTorus(modifier: Modifier) {
+fun CubicSphere(modifier: Modifier) {
 
     BoxWithConstraints(
         Modifier
@@ -38,8 +40,8 @@ fun SquareTorus(modifier: Modifier) {
         val infiniteTransition = rememberInfiniteTransition()
 
         val squareCount by infiniteTransition.animateFloat(
+            359f,
             0f,
-            360f,
             infiniteRepeatable(
                 tween(
                     5000,
@@ -77,7 +79,7 @@ fun SquareTorus(modifier: Modifier) {
 
                     (0..squareCount.roundToInt() step 5).forEach { angle ->
 
-                        val size = 50f * (index + 1)
+                        val size = 5f * (index + 1)
 
                         rotate(
                             angle.toFloat(),
@@ -109,8 +111,21 @@ fun SquareTorus(modifier: Modifier) {
 @Composable
 fun RippledLinesComposablePreview() {
     CreativeCodingComposeTheme {
-        SquareTorus(
-            Modifier.fillMaxSize()
-        )
+        Stacker(
+            modifier = Modifier
+                .background(Color.Black)
+                .fillMaxSize(),
+            repetitions = 20,
+            offsetProvider = { index ->
+                IntOffset(
+                    cos(index.toFloat()).roundToInt() * 15,
+                    sin(index.toFloat()).roundToInt() * 15
+                )
+            }
+        ) { index, modifier ->
+            CubicSphere(
+                modifier = modifier,
+            )
+        }
     }
 }
