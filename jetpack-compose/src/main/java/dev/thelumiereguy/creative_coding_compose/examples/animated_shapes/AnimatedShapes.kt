@@ -1,6 +1,10 @@
 package dev.thelumiereguy.creative_coding_compose.examples.animated_shapes
 
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -13,7 +17,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.IntOffset
 import dev.romainguy.kotlin.math.radians
+import dev.thelumiereguy.creative_coding_compose.examples.stacker.Stacker
 import dev.thelumiereguy.creative_coding_compose.theme.CreativeCodingComposeTheme
 import kotlin.math.cos
 import kotlin.math.roundToInt
@@ -59,8 +65,8 @@ fun AnimatedShapes(modifier: Modifier) {
                         drawLine(
                             Color.White,
                             start = Offset(
-                                cos(radians(0f)) * 150f,
-                                sin(radians(0f)) * 150f
+                                cos(0f) * 150f,
+                                sin(0f) * 150f
                             ),
                             end = Offset(
                                 cos(radians((360 / sideCount))) * 150f,
@@ -79,8 +85,18 @@ fun AnimatedShapes(modifier: Modifier) {
 @Composable
 fun AnimatedShapesPreview() {
     CreativeCodingComposeTheme {
-        AnimatedShapes(
-            Modifier.fillMaxSize()
-        )
+        Stacker(
+            modifier = Modifier
+                .background(Color.Black)
+                .fillMaxSize(),
+            repetitions = 50,
+            offsetProvider = { index ->
+                IntOffset(index * 10, index * 30)
+            }
+        ) { index, modifier ->
+            AnimatedShapes(
+                modifier = modifier
+            )
+        }
     }
 }

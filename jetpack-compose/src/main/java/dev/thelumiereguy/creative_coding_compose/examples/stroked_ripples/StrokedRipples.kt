@@ -1,4 +1,4 @@
-package dev.thelumiereguy.creative_coding_compose.examples.rippled_lines
+package dev.thelumiereguy.creative_coding_compose.examples.stroked_ripples
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
@@ -21,7 +21,7 @@ import dev.thelumiereguy.creative_coding_compose.theme.CreativeCodingComposeThem
 
 @OptIn(ExperimentalGraphicsApi::class)
 @Composable
-fun RippledLines(modifier: Modifier) {
+fun StrokedRipples(modifier: Modifier) {
 
     BoxWithConstraints(modifier = Modifier) {
 
@@ -83,7 +83,7 @@ fun RippledLines(modifier: Modifier) {
 @Composable
 fun RippledLinesComposablePreview() {
     CreativeCodingComposeTheme {
-        RippledLines(
+        StrokedRipples(
             Modifier.fillMaxSize()
         )
     }

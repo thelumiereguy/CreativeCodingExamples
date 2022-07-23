@@ -10,6 +10,7 @@ dependencies {
     implementation(compose.desktop.macos_arm64)
     implementation(kotlin("stdlib"))
     implementation("me.nikhilchaudhari:k5-compose:1.0.1")
+    implementation("dev.romainguy:kotlin-math:1.3.0")
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>() {
